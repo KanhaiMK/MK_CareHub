@@ -1,0 +1,64 @@
+.child-detail-card {
+    display: flex;
+    gap: 2.5rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.child-detail-img {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: var(--bg-surface-alt);
+    flex-shrink: 0;
+}
+
+.child-detail-info h1 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.child-meta {
+    color: var(--baby-blue);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.child-story {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-surface-alt);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.adopt-message {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--error);
+}
+
+.success-text {
+    color: var(--success);
+}
+
+@media (max-width: 640px) {
+    .child-detail-card {
+        flex-direction: column;
+    }
+    .child-detail-img {
+        width: 100%;
+        height: 260px;
+    }
+}

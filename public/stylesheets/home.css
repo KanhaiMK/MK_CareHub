@@ -1,0 +1,105 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.hero p {
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: var(--chestnut-rose);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--baby-blue);
+    color: #121212;
+}
+
+.children-section {
+    margin-top: 3rem;
+}
+
+.children-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.children-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.loading-text {
+    color: var(--text-secondary);
+}
+
+.child-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.child-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--chestnut-rose);
+}
+
+.child-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background-color: var(--bg-surface-alt);
+}
+
+.child-card-info {
+    padding: 1rem;
+}
+
+.child-card-info h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.child-card-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}

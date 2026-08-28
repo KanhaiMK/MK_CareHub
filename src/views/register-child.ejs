@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MK_CareHub - Register a Child</title>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/auth.css" />
+    <link rel="stylesheet" href="/stylesheets/form-page.css" />
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    <main class="auth-container">
+        <div class="auth-card form-card-wide">
+        <h2>Register a Found Child</h2>
+        <p class="auth-subtitle">Every detail helps us reunite or protect this child. This submission will be reviewed before going live.</p>
+
+        <form id="register-child-form">
+            <div class="form-group">
+            <label for="name">Child's Name (if known)</label>
+            <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-row">
+            <div class="form-group">
+                <label for="age">Approximate Age</label>
+                <input type="number" id="age" name="age" min="0" max="18" required />
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                <option value="">Select...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                </select>
+            </div>
+            </div>
+
+            <div class="form-group">
+            <label for="foundLocation">Where was the child found?</label>
+            <input type="text" id="foundLocation" name="foundLocation" required />
+            </div>
+
+            <div class="form-group">
+            <label for="story">Additional details</label>
+            <textarea id="story" name="story" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+            <label for="photo">Photo</label>
+            <input type="file" id="photo" name="photo" accept="image/png, image/jpeg" required />
+            </div>
+
+            <p id="error-message" class="error-message"></p>
+
+            <button type="submit" class="btn btn-primary btn-full">Submit for Verification</button>
+        </form>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/chatbot') %>
+
+    <script src="/javascripts/api.js"></script>
+    <script src="/javascripts/navbar.js"></script>
+    <script src="/javascripts/register-child.js"></script>
+    <script src="/javascripts/chatbot.js"></script>
+</body>
+</html>

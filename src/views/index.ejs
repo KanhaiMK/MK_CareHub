@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MK_CareHub - Home</title>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/home.css" />
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    <main class="container">
+
+        <section class="hero">
+        <h1>Give a Child a Home</h1>
+        <p>Browse children awaiting adoption, or help a child you've found get the care they need.</p>
+        <div class="hero-actions">
+            <button id="register-child-btn" class="btn btn-primary">Register a Found Child</button>
+            <button id="donate-btn" class="btn btn-secondary">Donate</button>
+        </div>
+        </section>
+
+        <section class="children-section">
+        <h2>Children Awaiting Adoption</h2>
+        <div class="children-grid" id="children-grid">
+            <!-- Filled dynamically by JS -->
+            <p class="loading-text">Loading children...</p>
+        </div>
+        </section>
+
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <!-- Chatbot widget will go here -->
+    <%- include('partials/chatbot') %>
+
+    <script src="/javascripts/api.js"></script>
+    <script src="/javascripts/navbar.js"></script>
+    <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/chatbot.js"></script>
+</body>
+</html>

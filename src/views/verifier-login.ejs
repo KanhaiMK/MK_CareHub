@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MK_CareHub - Verifier Login</title>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/auth.css" />
+</head>
+<body>
+
+    <main class="auth-container">
+        <div class="auth-card">
+        <h2>Verifier Portal</h2>
+        <p class="auth-subtitle">Staff login for verification & approvals</p>
+
+        <form id="verifier-login-form">
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+            </div>
+
+            <p id="error-message" class="error-message"></p>
+
+            <button type="submit" class="btn btn-primary btn-full">Login</button>
+        </form>
+
+        <p class="auth-switch"><a href="/">Back to main site</a></p>
+        </div>
+    </main>
+
+    <script src="/javascripts/api.js"></script>
+    <script src="/javascripts/verifier-login.js"></script>
+</body>
+</html>

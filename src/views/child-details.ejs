@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MK_CareHub - Child Details</title>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/child-details.css" />
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    <main class="container">
+        <div id="child-detail-content">
+        <p class="loading-text">Loading details...</p>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/chatbot') %>
+
+    <script src="/javascripts/api.js"></script>
+    <script src="/javascripts/chatbot.js"></script>
+    <script src="/javascripts/navbar.js"></script>
+    <script src="/javascripts/child-details.js"></script>
+</body>
+</html>
