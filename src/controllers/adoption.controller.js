@@ -1,6 +1,6 @@
 const Adoption = require('../models/adoption.model');
 const Child = require('../models/child.model');
-
+const { invalidateChildrenCache, invalidateChildCache } = require('../utils/cache');
 // @desc   Apply to adopt a child
 // @route  POST /api/adoptions
 exports.applyForAdoption = async (req, res) => {
@@ -28,6 +28,9 @@ exports.applyForAdoption = async (req, res) => {
         // Mark child as having a pending adoption, so others can't also apply simultaneously
         child.adoptionStatus = 'pending_adoption';
         await child.save();
+
+        await invalidateChildrenCache(); // adoptionStatus changed
+        await invalidateChildCache(childId);
 
         res.status(201).json({
             message: 'Adoption application submitted. Awaiting verification.',
@@ -92,6 +95,9 @@ exports.verifyAdoption = async (req, res) => {
         if (child) {
             child.adoptionStatus = decision === 'approved' ? 'adopted' : 'available';
             await child.save();
+
+            await invalidateChildrenCache(); // adoptionStatus changed
+            await invalidateChildCache(child._id);
         }
 
         res.status(200).json({ message: `Adoption ${decision}`, adoption });

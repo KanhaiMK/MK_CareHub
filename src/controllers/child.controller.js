@@ -1,4 +1,8 @@
 const Child = require('../models/child.model');
+const { 
+    getCachedChildren, setCachedChildren, invalidateChildrenCache,
+    getCachedChild, setCachedChild, invalidateChildCache
+} = require('../utils/cache');
 
 // @desc   Register a new child (goes into pending verification)
 // @route  POST /api/children
@@ -32,12 +36,24 @@ exports.createChild = async (req, res) => {
 // @route  GET /api/children
 exports.getAllChildren = async (req, res) => {
     try {
+        // 1. Try cache first
+        const cached = await getCachedChildren();
+        if (cached) {
+            return res.status(200).json(cached);
+        }
+
+        // 2. Cache miss - hit MongoDB
         const children = await Child.find({ verificationStatus: 'approved' }).sort({ createdAt: -1 });
 
-        res.status(200).json({
+        const responseData = {
             count: children.length,
             children,
-        });
+        };
+
+        // 3. Populate cache for next time
+        await setCachedChildren(responseData);
+
+        res.status(200).json(responseData);
     } catch (error) {
         res.status(500).json({ message: 'Server error', error: error.message });
     }
@@ -47,13 +63,21 @@ exports.getAllChildren = async (req, res) => {
 // @route  GET /api/children/:id
 exports.getChildById = async (req, res) => {
     try {
+        const cached = await getCachedChild(req.params.id);
+        if (cached) {
+            return res.status(200).json(cached);
+        }
+
         const child = await Child.findById(req.params.id);
 
         if (!child) {
-        return res.status(404).json({ message: 'Child not found' });
+            return res.status(404).json({ message: 'Child not found' });
         }
 
-        res.status(200).json({ child });
+        const responseData = { child };
+        await setCachedChild(req.params.id, responseData);
+
+        res.status(200).json(responseData);
     } catch (error) {
         res.status(500).json({ message: 'Server error', error: error.message });
     }
@@ -91,6 +115,9 @@ exports.verifyChild = async (req, res) => {
         child.verificationStatus = decision;
         child.verifiedBy = req.user._id;
         await child.save();
+
+        await invalidateChildrenCache(); // a child just became visible/invisible
+        await invalidateChildCache(child._id);
 
         res.status(200).json({ message: `Child listing ${decision}`, child });
     } catch (error) {
