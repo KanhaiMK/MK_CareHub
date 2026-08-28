@@ -38,6 +38,22 @@
     transform: scale(1.08);
 }
 
+#chatbot-panel {
+    position: absolute;
+    bottom: 84px;
+    right: 0;
+    width: 360px;
+    height: 480px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: chatbot-pop 0.25s ease;
+}
+
 @media (max-width: 420px) {
     #chatbot-widget {
         bottom: 1rem;
