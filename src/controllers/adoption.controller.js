@@ -1,6 +1,7 @@
 const Adoption = require('../models/adoption.model');
 const Child = require('../models/child.model');
 const { invalidateChildrenCache, invalidateChildCache } = require('../utils/cache');
+
 // @desc   Apply to adopt a child
 // @route  POST /api/adoptions
 exports.applyForAdoption = async (req, res) => {

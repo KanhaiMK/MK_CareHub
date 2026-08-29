@@ -20,6 +20,7 @@ exports.chat = async (req, res) => {
             history: result.updatedHistory,
         });
     } catch (error) {
+        console.error("GEMINI API ERROR:", error); // <-- ADD THIS L
         res.status(500).json({ message: 'AI assistant error', error: error.message });
     }
 };
